@@ -1,0 +1,25 @@
+import urllib
+from BeautifulSoup import *
+
+url = 'http://python-data.dr-chuck.net/comments_244235.html'
+html = urllib.urlopen(url).read()
+
+soup = BeautifulSoup(html)
+
+contents = []
+
+# Retrieve all of the anchor tags
+tags = soup('span')
+for tag in tags:
+    # Look at the parts of a tag
+    contents.append(tag.contents[0])
+
+contents = map(int, contents)
+
+count = len(contents)
+sum = sum(contents)
+
+print count
+print sum
+	
+
